@@ -3,7 +3,7 @@ import { FirstContract } from '../wrappers/FirstContract';
 import { NetworkProvider } from '@ton/blueprint';
 
 export async function run(provider: NetworkProvider) {
-    const firstContract = provider.open(await FirstContract.fromInit());
+    const firstContract = provider.open(await FirstContract.fromInit(54325n));
 
     await firstContract.send(
         provider.sender(),
