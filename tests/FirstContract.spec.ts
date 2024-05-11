@@ -23,7 +23,7 @@ describe('FirstContract', () => {
             {
                 $$type: 'Deploy',
                 queryId: 0n,
-            }
+            },
         );
 
         expect(deployResult.transactions).toHaveTransaction({
@@ -40,43 +40,36 @@ describe('FirstContract', () => {
     });
 
     it('should increase', async () => {
-        const counterBefore = await firstContract.getCounter()
-        console.log('counterBefore', counterBefore)
+        const counterBefore = await firstContract.getCounter();
 
         await firstContract.send(
             deployer.getSender(),
             {
-                value: toNano('0.02')
+                value: toNano('0.02'),
             },
-            'increment'
-        )
+            'increment',
+        );
 
         const counterAfter = await firstContract.getCounter();
-        console.log('counterAfter', counterAfter)
-
-        expect(counterBefore).toBeLessThan(counterAfter)
+        expect(counterBefore).toBeLessThan(counterAfter);
     });
 
     it('should increase with amount', async () => {
-        const counterBefore = await firstContract.getCounter()
-        console.log('counterBeforeAmount', counterBefore)
-
+        const counterBefore = await firstContract.getCounter();
         const amount = 5n;
 
         await firstContract.send(
             deployer.getSender(),
             {
-                value: toNano('0.02')
+                value: toNano('0.02'),
             },
             {
                 amount,
                 $$type: 'Add',
-            }
-        )
+            },
+        );
 
         const counterAfter = await firstContract.getCounter();
-        console.log('counterAfterAmount', counterAfter)
-
-        expect(counterBefore).toBeLessThan(counterAfter)
+        expect(counterBefore).toBeLessThan(counterAfter);
     });
 });
