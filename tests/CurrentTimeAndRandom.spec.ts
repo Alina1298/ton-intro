@@ -61,13 +61,8 @@ describe('CurrentTimeAndRandom', () => {
 
     it('should show random', async () => {
         const randomInt = await currentTimeAndRandom.getRand();
-        console.log('randomInt', randomInt);
-
         const randomBetween = await currentTimeAndRandom.getRandBetween(-10n, 30n);
-        console.log('randomBetween', randomBetween);
-
         const unixTime = await currentTimeAndRandom.getUnixTime();
-        console.log('unixTime', unixTime);
     });
 });
 
